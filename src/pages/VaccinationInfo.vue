@@ -11,32 +11,33 @@
                        <p class="text-[22px] font-bold">უკვე აცრილი ხარ?*</p>
                        
                         <div class="mt-3 h-10 flex items-center">
-                            <input class="w-6 h-6" type="radio" name="vax"/>
-                            <label class="ml-5 text-xl" for="covid">კი</label>
+                            <input v-model="had_vaccine" @change="setVaccination" value="yes" class="w-6 h-6" type="radio" :value=true name="had_vaccine"/>
+                            <label class="ml-5 text-xl" for="had_vaccine">კი</label>
                         </div>
                         <div class="mt-3 h-10 flex items-center">
-                            <input class="w-6 h-6" type="radio" name="vax"/>
-                            <label class="ml-5 text-xl" for="covid">არა</label>
+                            <input v-model="had_vaccine" @change="setVaccination" value="no" class="w-6 h-6" type="radio" :value=false name="had_vaccine"/>
+                            <label class="ml-5 text-xl" for="had_vaccine">არა</label>
                         </div>
+                        <p class="text-red-500 font-bold text-2xl">{{$store.state.had_vaccine}}</p>
                     </div>
 
                     <div class="flex flex-col mt-8 w-max">
                        <p class="text-[22px] font-bold">აირჩიე რა ეტაპზე ხარ*</p>
                        
                         <div class="mt-3 h-10 flex items-center">
-                            <input class="w-6 h-6" type="radio" name="stage"/>
-                            <label class="ml-5 text-xl" for="test">პირველი დოზა და დარეგისტრირებული ვარ მეორეზე</label>
+                            <input v-model="vaccination_stage" @change="setStage" value="first_dosage_and_registered_on_the_second" class="w-6 h-6" type="radio" name="vaccination_stage"/>
+                            <label class="ml-5 text-xl" for="vaccination_stage">პირველი დოზა და დარეგისტრირებული ვარ მეორეზე</label>
                         </div>
                         <div class="mt-3 h-10 flex items-center">
-                            <input class="w-6 h-6" type="radio" name="stage"/>
-                            <label class="ml-5 text-xl" for="test">სრულიად აცრილი ვარ</label>
+                            <input v-model="vaccination_stage" @change="setStage" value="fully_vaccinated" class="w-6 h-6" type="radio" name="vaccination_stage"/>
+                            <label class="ml-5 text-xl" for="vaccination_stage">სრულიად აცრილი ვარ</label>
                         </div>
                         <div class="mt-3 h-10 flex items-center">
-                            <input class="w-6 h-6" type="radio" name="stage"/>
-                            <label class="ml-5 text-xl" for="test">პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე</label>
+                            <input v-model="vaccination_stage" @change="setStage" value="first_dosage_and_not_registered_yet" class="w-6 h-6" type="radio" name="vaccination_stage"/>
+                            <label class="ml-5 text-xl" for="vaccination_stage">პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე</label>
                         </div>
+                        <p class="text-red-500 font-bold text-2xl">{{$store.state.vaccination_stage}}</p>
                     </div>
-
 
                     <div class="flex flex-col ml-10 mt-10 w-[600px]">
                       <p class="text-xl">რომ არ გადადო,</p>
@@ -53,3 +54,22 @@
     </div>
 </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            had_vaccine: null,
+            vaccination_stage: '',
+        }
+    },
+    computed: {
+        setVaccination() {
+            this.$store.commit('setVaccination', {value: this.had_vaccine})
+        },
+        setStage() {
+            this.$store.commit('setStage', {value: this.vaccination_stage})
+        },
+    }
+}
+</script>

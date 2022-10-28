@@ -10,19 +10,24 @@
                     <div>
                         <form>
                             <div class="flex flex-col mt-8">
-                                <label class="text-[22px] font-bold" for="firstName">სახელი*</label>
-                                <input class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]" name="firstName" type="username" placeholder="იოსებ" />
-                            </div>
+                                <label class="text-[22px] font-bold" for="first_name">სახელი*</label>
+                                <input v-model="first_name" @change="setFirstName" class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]" name="firstName" type="username" placeholder="იოსებ" />
+                                <p class="text-red-500 font-bold text-2xl">{{$store.state.first_name}}</p>
+                                </div>
 
                             <div class="flex flex-col mt-8">
-                                <label class="text-[22px] font-bold" for="firstName">გვარი*</label>
-                                <input class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]" name="lastName" type="username" placeholder="ჯუღაშვილი"/>
+                                <label class="text-[22px] font-bold" for="last_name">გვარი*</label>
+                                <input v-model="last_name" @change="setLastName" class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]" name="last_name" type="username" placeholder="ჯუღაშვილი"/>
                             </div>
+                            <p class="text-red-500 font-bold text-2xl">{{$store.state.last_name}}</p>
+
 
                             <div class="flex flex-col mt-8">
-                                <label class="text-[22px] font-bold" for="firstName">მეილი*</label>
-                                <input class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]" name="password" type="email" placeholder="fbi@redberry.ge"/>
+                                <label class="text-[22px] font-bold" for="email">მეილი*</label>
+                                <input v-model="email" @change="setEmail" class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]" name="email" type="email" placeholder="fbi@redberry.ge"/>
                             </div>
+                            <p class="text-red-500 font-bold text-2xl">{{$store.state.email}}</p>
+
                         </form>
                         <div class="mt-28 w-60 border-t-2 border-black">
                             <p class="w-72 mt-5">*-ით მონიშნული ველების შევსება სავალდებულოა</p>
@@ -37,3 +42,26 @@
     </div>
 </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            first_name: '',
+            last_name: '',
+            email: '',
+        }
+    },
+    computed: {
+        setFirstName() {
+            this.$store.commit('setFirstName', {value: this.first_name})
+        },
+        setLastName() {
+            this.$store.commit('setLastName', {value: this.last_name})
+        },
+        setEmail() {
+            this.$store.commit('setEmail', {value: this.email})
+        }
+    }
+}
+</script>
