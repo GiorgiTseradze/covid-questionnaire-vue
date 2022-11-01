@@ -6,45 +6,56 @@
                 <p class="text-3xl font-bold">1/4</p>
             </div>
             <div class="flex">
-                <div class="flex w-1/4">
-                    <div>
-                        <form>
-                            <div class="flex flex-col mt-8">
-                                <label class="text-[22px] font-bold" for="first_name">სახელი*</label>
-                                <input v-model="first_name" @change="setFirstName" class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]" name="firstName" type="username" placeholder="იოსებ" />
-                                <p class="text-red-500 font-bold text-2xl">{{$store.state.first_name}}</p>
+                <Form class="flex" @submit="handleSubmit()">
+                    <div class="flex w-1/4">
+                        <div>
+                                <div class="flex flex-col mt-8">
+                                    <label class="text-[22px] font-bold" for="first_name">სახელი*</label>
+                                    <Field v-model="first_name" @change="setFirstName" rules="required|min_name:3|max_name:255|name_alpha" name="first_name" type="text" placeholder="იოსებ" class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]"  />
+                                    <ErrorMessage name="first_name" class="text-[#F15524]" />
                                 </div>
 
-                            <div class="flex flex-col mt-8">
-                                <label class="text-[22px] font-bold" for="last_name">გვარი*</label>
-                                <input v-model="last_name" @change="setLastName" class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]" name="last_name" type="username" placeholder="ჯუღაშვილი"/>
+                                <div class="flex flex-col mt-8">
+                                    <label class="text-[22px] font-bold" for="last_name">გვარი*</label>
+                                    <Field v-model="last_name" @change="setLastName" rules="required|min_last_name:3|max_last_name:255|last_name_alpha" name="last_name" type="text" placeholder="ჯუღაშვილი" class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]" />
+                                    <ErrorMessage name="last_name" class="text-[#F15524]" />
+                                </div>
+
+                                <div class="flex flex-col mt-8">
+                                    <label class="text-[22px] font-bold" for="email">მეილი*</label>
+                                    <Field v-model="email" @change="setEmail" rules="required|email|email_redberry" type="email" name="email" placeholder="fbi@redberry.ge" class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]"/>
+                                    <ErrorMessage name="email" class="text-[#F15524]" />
+                                </div>
+                
+                            <div class="mt-28 w-60 border-t-2 border-black">
+                                <p class="w-72 mt-5">*-ით მონიშნული ველების შევსება სავალდებულოა</p>
                             </div>
-                            <p class="text-red-500 font-bold text-2xl">{{$store.state.last_name}}</p>
-
-
-                            <div class="flex flex-col mt-8">
-                                <label class="text-[22px] font-bold" for="email">მეილი*</label>
-                                <input v-model="email" @change="setEmail" class="p-2 mt-2 bg-[#EAEAEA] border-[1px] border-[#232323] w-[513px]" name="email" type="email" placeholder="fbi@redberry.ge"/>
-                            </div>
-                            <p class="text-red-500 font-bold text-2xl">{{$store.state.email}}</p>
-
-                        </form>
-                        <div class="mt-28 w-60 border-t-2 border-black">
-                            <p class="w-72 mt-5">*-ით მონიშნული ველების შევსება სავალდებულოა</p>
                         </div>
                     </div>
-                </div>
 
-            <div class="flex ml-60 w-1/2">
-                <img class="" src="../assets/couple.png" alt="redberry-name"/> 
-            </div>
+                    <div class="flex flex-col ml-60 w-1/2">
+                        <img src="../assets/couple.png" alt="redberry-name"/> 
+                        <div class="ml-32">
+                                <button>
+                                    <img src="../assets/next.svg" />
+                                </button>
+                        </div>
+                    </div>
+        </Form>
         </div>
     </div>
 </div>
 </template>
 
 <script>
+import {Field, ErrorMessage, Form} from 'vee-validate';
+
 export default {
+    components: {
+        Field, 
+        ErrorMessage,
+        Form
+    },
     data() {
         return {
             first_name: '',
@@ -61,6 +72,11 @@ export default {
         },
         setEmail() {
             this.$store.commit('setEmail', {value: this.email})
+        }
+    }, 
+    methods: {
+        handleSubmit() {
+            this.$router.push('/covid')
         }
     }
 }

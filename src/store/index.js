@@ -8,16 +8,17 @@ const store = createStore({
             email: '',
             had_covid: '',
             had_antibody_test: null,
+            covid_sickness_date: '',
             antibodies: {
                 test_date: '',
                 number: '',
             },
-           had_vaccine: null,
-           vaccination_stage: '',
-           non_formal_meetings: '',
-           number_of_days_from_office: null,
-           what_about_meetings_in_live: '',
-           tell_us_your_opinion_about_us: '',
+            had_vaccine: null,
+            vaccination_stage: '',
+            non_formal_meetings: '',
+            number_of_days_from_office: null,
+            what_about_meetings_in_live: '',
+            tell_us_your_opinion_about_us: '',
         };
     },
     mutations: {
@@ -35,6 +36,9 @@ const store = createStore({
         },
         setTest(state, payload) {
             state.had_antibody_test = payload.value;
+        },
+        setSickness(state, payload) {
+            state.covid_sickness_date = payload.value
         },
         setDate(state, payload) {
             state.antibodies.test_date = payload.value;
