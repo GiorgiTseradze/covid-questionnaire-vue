@@ -1,7 +1,7 @@
 <template>
     <div className="flex flex-col justify-center items-center h-screen bg-[#EAEAEA]">
   <div>
-    <img src="../assets/redberry-logo.svg" />
+    <img src="/src/assets/redberry-logo.svg" />
   </div>
   <div>
     <router-link to="/info">

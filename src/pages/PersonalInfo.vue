@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center h-screen bg-[#EAEAEA]">
         <div class="w-4/5">
             <div class="flex justify-between mt-24 border-b-2 border-black">
-                <img class="mb-6" src="../assets/redberry.svg" alt="redberry-name"/> 
+                <img class="mb-6" src="/src/assets/redberry.svg" alt="redberry-name"/> 
                 <p class="text-3xl font-bold">1/4</p>
             </div>
             <div class="flex">
@@ -34,10 +34,10 @@
                     </div>
 
                     <div class="flex flex-col ml-60 w-1/2">
-                        <img src="../assets/couple.png" alt="redberry-name"/> 
+                        <img src="/src/assets/couple.png" alt="couple"/> 
                         <div class="ml-32">
                                 <button>
-                                    <img src="../assets/next.svg" />
+                                    <img src="/src/assets/next.svg" />
                                 </button>
                         </div>
                     </div>
@@ -63,7 +63,8 @@ export default {
             email: '',
         }
     },
-    computed: {
+
+    methods: {
         setFirstName() {
             this.$store.commit('setFirstName', {value: this.first_name})
         },
@@ -72,9 +73,7 @@ export default {
         },
         setEmail() {
             this.$store.commit('setEmail', {value: this.email})
-        }
-    }, 
-    methods: {
+        },
         handleSubmit() {
             this.$router.push('/covid')
         }

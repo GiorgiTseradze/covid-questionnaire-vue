@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center h-screen bg-[#EAEAEA]">
         <div class="w-4/5">
             <div class="flex justify-between mt-24 border-b-2 border-black">
-                <img class="mb-6" src="../assets/redberry.svg" alt="redberry-name"/> 
+                <img class="mb-6" src="/src/assets/redberry.svg" alt="redberry-name"/> 
                 <p class="text-3xl font-bold">3/4</p>
             </div>
             <div class="flex">
@@ -46,16 +46,16 @@
                       <a class="text-[#1289AE]" href="https://booking.moh.gov.ge/">https://booking.moh.gov.ge/</a>
                     </div>
 
-                </div>
+                </div>  
 
             <div class="flex flex-col mt-14 ml-60 w-1/2">
-                <img class="h-[700px]" src="../assets/vax.svg" alt="redberry-name"/> 
+                <img class="h-[700px]" src="/src/assets/vax.svg" alt="redberry-name"/> 
                 <div class="flex justify-between w-28">
                     <router-link to="/covid">
-                        <img src="../assets/back.svg" /> 
+                        <img src="/src/assets/back.svg" /> 
                     </router-link>
                     <button>
-                        <img src="../assets/next.svg" />
+                        <img src="/src/assets/next.svg" />
                     </button>
                 </div>
             </div>
@@ -80,15 +80,14 @@ export default {
             vaccination_stage: '',
         }
     },
-    computed: {
+
+    methods: {
         setVaccination() {
             this.$store.commit('setVaccination', {value: this.had_vaccine})
         },
         setStage() {
             this.$store.commit('setStage', {value: this.vaccination_stage})
         },
-    },
-    methods: {
         handleSubmit() {
             this.$router.push('/opinion')
         }

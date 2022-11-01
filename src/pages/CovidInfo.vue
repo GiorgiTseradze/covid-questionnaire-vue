@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center h-screen bg-[#EAEAEA]">
         <div class="w-4/5">
             <div class="flex justify-between mt-24 border-b-2 border-black">
-                <img class="mb-6" src="../assets/redberry.svg" alt="redberry-name"/> 
+                <img class="mb-6" src="/src/assets/redberry.svg" alt="redberry-name"/> 
                 <p class="text-3xl font-bold">2/4</p>
             </div>
             <div class="flex">
@@ -70,14 +70,14 @@
                 </div>
 
             <div class="flex flex-col ml-60 w-1/2 h-max">
-                <img class="h-[700px]" src="../assets/covid.svg" alt="redberry-name"/> 
+                <img class="h-[700px]" src="/src/assets/covid.svg" alt="redberry-name"/> 
                 <div class="ml-14">
                         <div class="flex justify-between w-28">
                             <router-link to="/info">
-                                <img src="../assets/back.svg" /> 
+                                <img src="/src/assets/back.svg" /> 
                             </router-link>
                             <button>
-                                    <img src="../assets/next.svg" />
+                                    <img src="/src/assets/next.svg" />
                             </button>
                         </div>
                 </div>
@@ -110,7 +110,8 @@ export default {
             
         }
     },
-    computed: {
+
+    methods: {
         setCovid() {
             this.$store.commit('setCovid', {value: this.had_covid})
         },
@@ -125,13 +126,10 @@ export default {
         },
         setNumber() {
             this.$store.commit('setNumber', {value: this.antibodies.number})
-        }
-    },
-    methods: {
+        },
         handleSubmit() {
             this.$router.push('/vaccination')
         }
-    }
-
+    },
 }
 </script> 
