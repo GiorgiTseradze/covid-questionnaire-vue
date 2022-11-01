@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "Arial";
+    src: local("Arial"),   url(./fonts/bpg_arial_2009.ttf) format("truetype");
+}
+
+.font-arial {
+    font-family: 'Arial';
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}

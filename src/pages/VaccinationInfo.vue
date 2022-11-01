@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center h-screen bg-[#EAEAEA]">
         <div class="w-4/5">
             <div class="flex justify-between mt-24 border-b-2 border-black">
-                <img class="mb-6" src="/src/assets/redberry.svg" alt="redberry-name"/> 
+                <img class="mb-6" src="/src/assets/redberry.svg" alt="Redberry name"/> 
                 <p class="text-3xl font-bold">3/4</p>
             </div>
             <div class="flex">
@@ -45,12 +45,12 @@
                       <p class="text-xl">ბარემ ახლავე დარეგისტრირდი</p>
                       <a class="text-[#1289AE]" href="https://booking.moh.gov.ge/">https://booking.moh.gov.ge/</a>
                     </div>
-
                 </div>  
 
             <div class="flex flex-col mt-14 ml-60 w-1/2">
-                <img class="h-[700px]" src="/src/assets/vax.svg" alt="redberry-name"/> 
-                <div class="flex justify-between w-28">
+                <img v-motion :initial="{ opacity: 0, scale: 0.5, y: 0, x: 0, }" :enter="{ opacity: 1, scale: 1, y: -200, x: 70, }" class="duration-[0.2s] absolute z-0 mt-48 w-56" src="/src/assets/star.svg" />
+                <img class="h-[700px] z-50" src="/src/assets/vax.svg" alt="Doctor with a needle"/> 
+                <div class="flex justify-between w-28 z-50">
                     <router-link to="/covid">
                         <img src="/src/assets/back.svg" /> 
                     </router-link>
@@ -76,8 +76,8 @@ export default {
     },
     data() {
         return {
-            had_vaccine: null,
-            vaccination_stage: '',
+            had_vaccine: this.$store.state.had_vaccine,
+            vaccination_stage: this.$store.state.vaccination_stage,
         }
     },
 

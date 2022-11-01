@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center h-screen bg-[#EAEAEA]">
         <div class="w-4/5">
             <div class="flex justify-between mt-24 border-b-2 border-black">
-                <img class="mb-6" src="/src/assets/redberry.svg" alt="redberry-name"/> 
+                <img class="mb-6" src="/src/assets/redberry.svg" alt="Redberry name"/> 
                 <p class="text-3xl font-bold">2/4</p>
             </div>
             <div class="flex">
@@ -70,8 +70,9 @@
                 </div>
 
             <div class="flex flex-col ml-60 w-1/2 h-max">
-                <img class="h-[700px]" src="/src/assets/covid.svg" alt="redberry-name"/> 
-                <div class="ml-14">
+                <img v-motion :initial="{ opacity: 0, scale: 0.5, y: -50, x: 200, }" :enter="{ opacity: 1, scale: 1, y: 0, x: 0, }" class="transition-all duration-[0.5s] absolute z-0 mt-48 w-56" src="/src/assets/circle.svg" />
+                <img class="h-[700px] z-50" src="/src/assets/covid.svg" alt="Covid"/> 
+                <div class="ml-12">
                         <div class="flex justify-between w-28">
                             <router-link to="/info">
                                 <img src="/src/assets/back.svg" /> 
@@ -81,7 +82,6 @@
                             </button>
                         </div>
                 </div>
-
             
             </div>
         </Form>
@@ -100,12 +100,12 @@ export default {
     },
     data() {
         return {
-            had_covid: '',
-            had_antibody_test: null,
-            covid_sickness_date: '',
+            had_covid: this.$store.state.had_covid,
+            had_antibody_test: this.$store.state.had_antibody_test,
+            covid_sickness_date: this.$store.state.covid_sickness_date,
             antibodies: {
-                test_date: '',
-                number: '',
+                test_date: this.$store.state.antibodies.test_date,
+                number: this.$store.state.antibodies.number,
             },
             
         }

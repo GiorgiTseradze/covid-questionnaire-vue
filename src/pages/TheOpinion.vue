@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center h-max bg-[#EAEAEA]">
         <div class="w-4/5">
             <div class="flex justify-between mt-24 border-b-2 border-black">
-                <img class="mb-6" src="/src/assets/redberry.svg" alt="redberry-name"/> 
+                <img class="mb-6" src="/src/assets/redberry.svg" alt="Redberry name"/> 
                 <p class="text-3xl font-bold">3/4</p>
             </div>
             <div class="flex">
@@ -45,7 +45,7 @@
                         <ErrorMessage class="text-[#F15524]" name="non_formal_meetings" />
                     </div>
 
-                    <div class="flex flex-col mt-11 w-[622px]">
+                    <div class="flex flex-col mt-11 w-[627px]">
                        <p class="text-[22px] font-bold">კვირაში რამდენი დღე ისურვებდი ოფისიდან მუშაობას?*</p>
                        
                         <div class="mt-3 h-10 flex items-center">
@@ -99,7 +99,8 @@
                 </div>
 
             <div class="flex ml-96 h-[703px] mt-[71px] w-1/2">
-                <img class="" src="/src/assets/office.svg" alt="redberry-name"/> 
+                <img v-motion :initial="{ opacity: 0, scale: 0.5, y: 0, x: 0, }" :enter="{ opacity: 1, scale: 1, y: -130, x: 100, }" class="transition-all duration-[0.5s] absolute z-0 mt-48 w-48" src="/src/assets/heart.svg" />
+                <img class="z-50" src="/src/assets/office.svg" alt="Boy riding a bike"/> 
             </div>
 
         </div>
@@ -117,10 +118,10 @@ export default {
     },
     data() {
         return {
-            non_formal_meetings: '',
-            number_of_days_from_office: null,
-            what_about_meetings_in_live: '',
-            tell_us_your_opinion_about_us: '',
+            non_formal_meetings: this.$store.state.non_formal_meetings,
+            number_of_days_from_office: this.$store.state.number_of_days_from_office,
+            what_about_meetings_in_live: this.$store.state.what_about_meetings_in_live,
+            tell_us_your_opinion_about_us: this.$store.state.tell_us_your_opinion_about_us,
         }
     },
 
