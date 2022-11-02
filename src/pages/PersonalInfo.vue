@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center h-screen bg-[#EAEAEA]">
         <div class="w-4/5">
             <div class="flex justify-between mt-24 border-b-2 border-black">
-                <img class="mb-6" src="/src/assets/redberry.svg" alt="redberry-name"/> 
+                <img class="mb-6" src="/src/assets/redberry.svg" alt="Redberry name"/> 
                 <p class="text-3xl font-bold">1/4</p>
             </div>
             <div class="flex">
@@ -34,7 +34,8 @@
                     </div>
 
                     <div class="flex flex-col ml-60 w-1/2">
-                        <img src="/src/assets/couple.png" alt="couple"/> 
+                        <div v-motion :initial="{ opacity: 0, y: 0, x: 0, width: 0, height: 0}" :enter="{ opacity: 1, y: 0, x: 0, width: 560, height:64 }" class="transition-all duration-[0.5s] absolute z-0 mt-48 ml-24 w-[560px] h-16 bg-[#D6D16E]"></div>
+                        <img class="z-50" src="/src/assets/couple.png" alt="Couple"/> 
                         <div class="ml-32">
                                 <button>
                                     <img src="/src/assets/next.svg" />
@@ -58,9 +59,9 @@ export default {
     },
     data() {
         return {
-            first_name: '',
-            last_name: '',
-            email: '',
+            first_name: this.$store.state.first_name,
+            last_name: this.$store.state.last_name,
+            email: this.$store.state.email,
         }
     },
 
