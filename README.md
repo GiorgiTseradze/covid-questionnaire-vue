@@ -1,14 +1,13 @@
-# covid-questionaire
+# Covid Questionnaire
 
-This template should help get you started developing with Vue 3 in Vite.
+This app helps an organization acquire knowledge about covid situation in the company. It is also great app to find out how employees feel about live meetings and covid related rules in general.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Tech Stack
+* *Vue 3*
+* *Vee Validate 4*
+* *Vue Router 4*
+* *Vuex 4*
+* *Vueuse/motion 2*
 
 ## Project Setup
 
