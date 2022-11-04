@@ -152,67 +152,34 @@ export default {
                 data['antibodies'] = {}
                 data['antibodies']['test_date'] = this.$store.state.antibodies.test_date
                 data['antibodies']['number'] = this.$store.state.antibodies.number
-                data['had_vaccine'] = this.$store.state.had_vaccine
-                data['vaccination_stage'] = this.$store.state.vaccination_stage
-                data['non_formal_meetings'] = this.$store.state.non_formal_meetings
-                data['number_of_days_from_office'] = this.$store.state.number_of_days_from_office
-
-                if(this.$store.state.what_about_meetings_in_live.length > 0 && this.$store.state.tell_us_your_opinion_about_us.length > 0) {
-                    data['what_about_meetings_in_live'] = this.$store.state.what_about_meetings_in_live
-                    data['tell_us_your_opinion_about_us'] = this.$store.state.tell_us_your_opinion_about_us
-                };
-
-                if(this.$store.state.what_about_meetings_in_live.length < 0 && this.$store.state.tell_us_your_opinion_about_us.length > 0) {
-                    data['tell_us_your_opinion_about_us'] = this.$store.state.tell_us_your_opinion_about_us
-                };
-
-                if(this.$store.state.what_about_meetings_in_live.length > 0 && this.$store.state.tell_us_your_opinion_about_us.length < 0) {
-                    data['what_about_meetings_in_live'] = this.$store.state.what_about_meetings_in_live
-                };
             }
 
             if(this.$store.state.had_covid === 'yes' && this.$store.state.had_antibody_test === false){
                 data['had_antibody_test'] = this.$store.state.had_antibody_test
                 data['covid_sickness_date'] = this.$store.state.covid_sickness_date
-                data['had_vaccine'] = this.$store.state.had_vaccine
-                data['vaccination_stage'] = this.$store.state.vaccination_stage
-                data['non_formal_meetings'] = this.$store.state.non_formal_meetings
-                data['number_of_days_from_office'] = this.$store.state.number_of_days_from_office
-
-                if(this.$store.state.what_about_meetings_in_live.length > 0 && this.$store.state.tell_us_your_opinion_about_us.length > 0) {
-                    data['what_about_meetings_in_live'] = this.$store.state.what_about_meetings_in_live
-                    data['tell_us_your_opinion_about_us'] = this.$store.state.tell_us_your_opinion_about_us
-                };
-
-                if(this.$store.state.what_about_meetings_in_live.length < 0 && this.$store.state.tell_us_your_opinion_about_us.length > 0) {
-                    data['tell_us_your_opinion_about_us'] = this.$store.state.tell_us_your_opinion_about_us
-                };
-
-                if(this.$store.state.what_about_meetings_in_live.length > 0 && this.$store.state.tell_us_your_opinion_about_us.length < 0) {
-                    data['what_about_meetings_in_live'] = this.$store.state.what_about_meetings_in_live
-                };
             }
 
-            if(this.$store.state.had_covid === 'no' || this.$store.state.had_covid === 'have_right_now'){
+            if(this.$store.state.had_vaccine === true) {
                 data['had_vaccine'] = this.$store.state.had_vaccine
                 data['vaccination_stage'] = this.$store.state.vaccination_stage
-                data['non_formal_meetings'] = this.$store.state.non_formal_meetings
-                data['number_of_days_from_office'] = this.$store.state.number_of_days_from_office
+            }
 
-                if(this.$store.state.what_about_meetings_in_live.length > 0 && this.$store.state.tell_us_your_opinion_about_us.length > 0) {
-                    data['what_about_meetings_in_live'] = this.$store.state.what_about_meetings_in_live
-                    data['tell_us_your_opinion_about_us'] = this.$store.state.tell_us_your_opinion_about_us
-                };
-
-                if(this.$store.state.what_about_meetings_in_live.length < 0 && this.$store.state.tell_us_your_opinion_about_us.length > 0) {
-                    data['tell_us_your_opinion_about_us'] = this.$store.state.tell_us_your_opinion_about_us
-                };
-
-                if(this.$store.state.what_about_meetings_in_live.length > 0 && this.$store.state.tell_us_your_opinion_about_us.length < 0) {
-                    data['what_about_meetings_in_live'] = this.$store.state.what_about_meetings_in_live
-                };
+            if(this.$store.state.had_vaccine === false) {
+                data['had_vaccine'] = this.$store.state.had_vaccine
+                data['i_am_waiting'] = this.$store.state.i_am_waiting
             }
             
+            data['non_formal_meetings'] = this.$store.state.non_formal_meetings
+            data['number_of_days_from_office'] = this.$store.state.number_of_days_from_office
+
+            if(this.$store.state.what_about_meetings_in_live.length > 0) {
+                data['what_about_meetings_in_live'] = this.$store.state.what_about_meetings_in_live
+            };
+
+            if(this.$store.state.tell_us_your_opinion_about_us.length > 0) {
+                data['tell_us_your_opinion_about_us'] = this.$store.state.tell_us_your_opinion_about_us
+            };
+
             return fetch('https://covid19.devtest.ge/api/create', {
                 method: "POST",
                 headers: {

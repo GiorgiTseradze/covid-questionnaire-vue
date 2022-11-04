@@ -57,7 +57,7 @@
                         </div>
                     </div> 
 
-                    <div v-if="$store.state.had_antibody_test === false" class="flex flex-col mt-8 w-[600px]"> 
+                    <div v-if="$store.state.had_covid === 'yes' && $store.state.had_antibody_test === false" class="flex flex-col mt-8 w-[600px]"> 
                        <p class="text-[22px] font-bold">მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*</p>
                        
                         <div class="mt-3">

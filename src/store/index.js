@@ -15,6 +15,7 @@ const store = createStore({
             },
             had_vaccine: null,
             vaccination_stage: '',
+            i_am_waiting: '',
             non_formal_meetings: '',
             number_of_days_from_office: null,
             what_about_meetings_in_live: '',
@@ -51,6 +52,9 @@ const store = createStore({
         },
         setStage(state, payload) {
             state.vaccination_stage = payload.value;
+        },
+        setWaiting(state, payload) {
+            state.i_am_waiting = payload.value;
         },
         setMeetings(state, payload) {
             state.non_formal_meetings = payload.value;
