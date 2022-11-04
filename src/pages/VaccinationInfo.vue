@@ -12,17 +12,17 @@
                        <p class="text-[22px] font-bold">უკვე აცრილი ხარ?*</p>
                        
                         <div class="mt-3 h-10 flex items-center">
-                            <Field v-model="had_vaccine" @change="setVaccination" rules="required" value="yes" class="w-6 h-6" type="radio" :value=true name="had_vaccine"/>
+                            <Field v-model="had_vaccine" @change="setVaccination" rules="required_boolean" class="w-6 h-6" type="radio" :value=true name="had_vaccine"/>
                             <label class="ml-5 text-xl" for="had_vaccine">კი</label>
                         </div>
                         <div class="mt-3 h-10 flex items-center">
-                            <Field v-model="had_vaccine" @change="setVaccination" value="no" class="w-6 h-6" type="radio" :value=false name="had_vaccine"/>
+                            <Field v-model="had_vaccine" @change="setVaccination" class="w-6 h-6" type="radio" :value=false name="had_vaccine"/>
                             <label class="ml-5 text-xl" for="had_vaccine">არა</label>
                         </div>
                         <ErrorMessage class="text-[#F15524]" name="had_vaccine" />
                     </div>
 
-                    <div class="flex flex-col mt-8 w-max">
+                    <div v-if="$store.state.had_vaccine === true ? true : false" class="flex flex-col mt-8 w-max">
                        <p class="text-[22px] font-bold">აირჩიე რა ეტაპზე ხარ*</p>
                        
                         <div class="mt-3 h-10 flex items-center">
@@ -38,12 +38,40 @@
                             <label class="ml-5 text-xl" for="vaccination_stage">პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე</label>
                         </div>
                         <ErrorMessage class="text-[#F15524]" name="vaccination_stage" />
+                        
                     </div>
 
-                    <div class="flex flex-col ml-10 mt-10 w-[600px]">
+                    <div v-if="$store.state.vaccination_stage === 'first_dosage_and_not_registered_yet' && $store.state.had_vaccine === true ? true : false" class="flex flex-col ml-10 mt-10 w-[600px]">
                       <p class="text-xl">რომ არ გადადო,</p>
                       <p class="text-xl">ბარემ ახლავე დარეგისტრირდი</p>
                       <a class="text-[#1289AE]" href="https://booking.moh.gov.ge/">https://booking.moh.gov.ge/</a>
+                    </div>
+
+                    <div v-if="$store.state.had_vaccine === false ? true : false" class="flex flex-col mt-8 w-max">
+                       <p class="text-[22px] font-bold">რას ელოდები?*</p>
+                       
+                        <div class="mt-3 h-10 flex items-center">
+                            <Field v-model="i_am_waiting" @change="setWaiting" rules="required" value="registered_and_waiting" class="w-6 h-6" type="radio" name="i_am_waiting"/>
+                            <label class="ml-5 text-xl" for="i_am_waiting">დარეგისტრირებული ვარ და ველოდები რიცხვს</label>
+                        </div>
+                        <div class="mt-3 h-10 flex items-center">
+                            <Field v-model="i_am_waiting" @change="setWaiting" value="not_planning" class="w-6 h-6" type="radio" name="i_am_waiting"/>
+                            <label class="ml-5 text-xl" for="i_am_waiting">არ ვგეგმავ</label>
+                        </div>
+                        <div class="mt-3 h-10 flex items-center">
+                            <Field v-model="i_am_waiting" @change="setWaiting" value="had_covid_and_planning_to_be_vaccinated" class="w-6 h-6" type="radio" name="i_am_waiting"/>
+                            <label class="ml-5 text-xl" for="i_am_waiting">გადატანილი მაქვს და ვგეგმავ აცრას</label>
+                        </div>
+                        <ErrorMessage class="text-[#F15524]" name="i_am_waiting" />
+                    </div>
+
+                    <div v-if="$store.state.i_am_waiting === 'had_covid_and_planning_to_be_vaccinated' && $store.state.had_vaccine === false ? true : false" class="flex flex-col ml-10 mt-10 w-[600px]">
+                        <p class="text-xl">ახალი პროტოკოლით კოვიდის გადატანიდან 1</p>
+                        <p class="text-xl">თვის შემდეგ შეგიძლიათ ვაქცინის გაკეთება.</p>
+                        <div class="mt-4">
+                            <p>👉 რეგისტრაციის ბმული</p>
+                            <a class="text-[#1289AE]" href="https://booking.moh.gov.ge/">https://booking.moh.gov.ge/</a>
+                        </div>
                     </div>
                 </div>  
 
@@ -78,6 +106,7 @@ export default {
         return {
             had_vaccine: this.$store.state.had_vaccine,
             vaccination_stage: this.$store.state.vaccination_stage,
+            i_am_waiting: this.$store.state.I_am_waiting,
         }
     },
 
@@ -88,9 +117,12 @@ export default {
         setStage() {
             this.$store.commit('setStage', {value: this.vaccination_stage})
         },
+        setWaiting() {
+            this.$store.commit('setWaiting', {value: this.i_am_waiting})
+        },
         handleSubmit() {
             this.$router.push('/opinion')
-        }
+        },
     }
 }
 </script>
