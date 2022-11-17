@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
-import TheLanding from '../pages/TheLanding.vue';
-import PersonalInfo from '../pages/PersonalInfo.vue';
-import CovidInfo from '../pages/CovidInfo.vue';
-import VaccinationInfo from '../pages/VaccinationInfo.vue';
-import TheOpinion from '../pages/TheOpinion.vue';
-import ThankYou from '../pages/ThankYou.vue'
+import TheLanding from '@/pages/TheLanding.vue';
+import PersonalInfo from '@/pages/PersonalInfo.vue';
+import CovidInfo from '@/pages/CovidInfo.vue';
+import VaccinationInfo from '@/pages/VaccinationInfo.vue';
+import TheOpinion from '@/pages/TheOpinion.vue';
+import ThankYou from '@/pages/ThankYou.vue'
 
 
 

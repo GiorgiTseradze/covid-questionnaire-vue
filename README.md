@@ -32,3 +32,21 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Project Setup
+
+```sh
+Link: https://covid-questionaire.giorgi-tseradze.redberryinternship.ge/
+```
+```sh
+Gitbook: https://redberry.gitbook.io/assignment-iii-covid-questionaire/
+```
+```sh
+Figma: https://bit.ly/3tAuXip
+```
+```sh
+Prototype: https://bit.ly/3hN2kvW
+```
+```sh
+API Specs: https://covid19.devtest.ge/api-specs
+```
